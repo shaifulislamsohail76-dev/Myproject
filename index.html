@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Moon Electronics & Accessories | International</title>
+    <title>New Moon Electronics & Accessories | Global Mega Store</title>
     <style>
         /* CSS Reset & Base Styles */
         * {
@@ -11,11 +11,12 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: #f4f6f9;
-            color: #333;
+            background-color: #f8fafc;
+            color: #1e293b;
             line-height: 1.6;
         }
 
@@ -28,7 +29,7 @@
         header {
             background-color: #0f172a;
             color: #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -38,13 +39,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 15px 20px;
         }
 
         .logo {
-            font-size: 22px;
+            font-size: 24px;
             font-weight: bold;
             letter-spacing: 1px;
         }
@@ -73,22 +74,39 @@
             color: #00d2d3;
         }
 
-        /* International Selector Dropdown */
         .intl-select {
             background-color: #1e293b;
             color: #fff;
             border: 1px solid #334155;
-            padding: 5px 10px;
-            border-radius: 4px;
+            padding: 6px 12px;
+            border-radius: 6px;
             font-size: 14px;
             cursor: pointer;
             outline: none;
         }
 
+        /* Floating Cart Icon Button */
+        .cart-status-btn {
+            background-color: #ff4757;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.3s;
+        }
+
+        .cart-status-btn:hover {
+            background-color: #ff6b81;
+        }
+
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('https://images.unsplash.com/photo-1468495244123-6c6c332eeece?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
-            height: 60vh;
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('https://images.unsplash.com/photo-1468495244123-6c6c332eeece?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            height: 50vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -99,15 +117,16 @@
         }
 
         .hero h1 {
-            font-size: 42px;
+            font-size: 46px;
             margin-bottom: 15px;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .hero p {
             font-size: 18px;
             margin-bottom: 25px;
-            max-width: 600px;
+            max-width: 700px;
             color: #94a3b8;
         }
 
@@ -116,7 +135,7 @@
             color: #0f172a;
             padding: 12px 30px;
             border: none;
-            border-radius: 5px;
+            border-radius: 6px;
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
@@ -128,25 +147,52 @@
             transform: translateY(-2px);
         }
 
+        /* Categories Filter Navbar */
+        .category-nav {
+            max-width: 1400px;
+            margin: 30px auto 10px;
+            padding: 0 20px;
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+        }
+
+        .cat-btn {
+            background-color: #e2e8f0;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .cat-btn.active, .cat-btn:hover {
+            background-color: #0f172a;
+            color: #fff;
+        }
+
         /* Product Section */
         .container {
-            max-width: 1200px;
-            margin: 60px auto;
+            max-width: 1400px;
+            margin: 20px auto 60px;
             padding: 0 20px;
         }
 
         .section-title {
             text-align: center;
-            font-size: 30px;
+            font-size: 32px;
             margin-bottom: 40px;
-            position: relative;
             color: #0f172a;
+            position: relative;
         }
 
         .section-title::after {
             content: '';
-            width: 50px;
-            height: 3px;
+            width: 60px;
+            height: 4px;
             background-color: #00d2d3;
             position: absolute;
             bottom: -10px;
@@ -156,27 +202,30 @@
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
         }
 
         .product-card {
             background-color: #fff;
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
             transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #f1f5f9;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .product-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
         }
 
         .product-image {
-            height: 250px;
-            background-color: #eaeaea;
+            height: 220px;
+            background-color: #f1f5f9;
             background-size: cover;
             background-position: center;
         }
@@ -184,6 +233,10 @@
         .product-info {
             padding: 20px;
             text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .product-category {
@@ -191,15 +244,15 @@
             color: #00d2d3;
             text-transform: uppercase;
             font-weight: bold;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
         }
 
         .product-title {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
             color: #1e293b;
             margin-bottom: 10px;
-            height: 50px;
+            height: 45px;
             overflow: hidden;
         }
 
@@ -210,7 +263,105 @@
             margin-bottom: 15px;
         }
 
-        /* Contact & Info Section */
+        .add-to-cart-btn {
+            background-color: #0f172a;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #00d2d3;
+            color: #0f172a;
+        }
+
+        /* Slide-out Cart Sidebar Dashboard */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -380px;
+            width: 380px;
+            height: 100vh;
+            background-color: #fff;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+            z-index: 2000;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            padding: 25px;
+        }
+
+        .cart-sidebar.open {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .close-cart {
+            font-size: 24px;
+            cursor: pointer;
+            color: #64748b;
+        }
+
+        .cart-items-list {
+            flex-grow: 1;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 14px;
+        }
+
+        .cart-item-details {
+            max-width: 220px;
+        }
+
+        .cart-item-title {
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .remove-item-btn {
+            color: #ff4757;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .cart-summary {
+            background-color: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        /* Contact Section */
         .contact-section {
             background-color: #0f172a;
             color: #fff;
@@ -225,7 +376,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
@@ -233,9 +384,6 @@
             background: #1e293b;
             padding: 40px;
             border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
 
         .contact-info-box h3 {
@@ -250,15 +398,10 @@
             color: #cbd5e1;
         }
 
-        .info-item strong {
-            color: #fff;
-        }
-
         .contact-form {
             background: #1e293b;
             padding: 40px;
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .form-group {
@@ -268,7 +411,6 @@
         .form-group label {
             display: block;
             margin-bottom: 5px;
-            font-weight: 600;
             color: #94a3b8;
         }
 
@@ -278,156 +420,310 @@
             background-color: #0f172a;
             border: 1px solid #334155;
             border-radius: 4px;
-            font-size: 15px;
             color: #fff;
         }
 
-        .form-group input:focus, .form-group textarea:focus {
-            outline: none;
-            border-color: #00d2d3;
-        }
-
-        /* Footer */
         footer {
             background-color: #020617;
-            color: #fff;
+            color: #64748b;
             text-align: center;
             padding: 30px 20px;
             border-top: 1px solid #1e293b;
         }
 
-        footer p {
-            font-size: 14px;
-            color: #64748b;
-        }
-
-        /* Responsive Menu */
         @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-            }
-            .nav-links {
-                margin-top: 15px;
-                flex-direction: column;
-                gap: 10px;
-            }
-            .nav-links li {
-                margin-left: 0;
-            }
-            .hero h1 {
-                font-size: 28px;
-            }
+            .navbar { flex-direction: column; gap: 15px; }
+            .hero h1 { font-size: 28px; }
+            .cart-sidebar { width: 100%; right: -100%; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header & Navbar -->
+    <!-- Top Navigation Header -->
     <header>
         <nav class="navbar">
             <div class="logo">NEW MOON <span>ELECTRONICS</span></div>
             <ul class="nav-links">
                 <li><a href="#">Home</a></li>
-                <li><a href="#products">Products</a></li>
+                <li><a href="#store-container">Products</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li>
-                    <!-- International Currency/Language Selector -->
-                    <select class="intl-select" onchange="alert('Currency/Language switched successfully!')">
-                        <option value="USD">USD ($) - EN</option>
-                        <option value="AED">AED (د.إ) - AR</option>
-                        <option value="BDT">BDT (৳) - BN</option>
+                    <select class="intl-select" id="currencySelect" onchange="updateCurrencyDisplay()">
+                        <option value="AED">AED (د.إ)</option>
+                        <option value="USD">USD ($)</option>
                     </select>
+                </li>
+                <li>
+                    <div class="cart-status-btn" onclick="toggleCartSidebar(true)">
+                        🛒 Cart (<span id="cart-count">0</span>)
+                    </div>
                 </li>
             </ul>
         </nav>
     </header>
 
-    <!-- Hero Banner -->
+    <!-- Hero Showcase Section -->
     <section class="hero">
-        <h1>Smart Gadgets & Electronics Collection</h1>
-        <p>Your Trusted Global Partner for Premium Electronics Accessories. Worldwide Shipping & Top-Tier Brands Available.</p>
-        <button class="btn" onclick="location.href='#products'">Explore Products</button>
+        <h1>Global Electronics Mega Store</h1>
+        <p>Your Premium Destination for Global Tech Accessories. 25 Featured High-Demand Items with Real-time Cart Calculations.</p>
+        <button class="btn" onclick="document.getElementById('store-container').scrollIntoView();">View Catalog</button>
     </section>
 
-    <!-- Main Content Container -->
-    <main class="container" id="products">
-        <h2 class="section-title">Our Featured Products</h2>
-        
-        <div class="product-grid">
-            <!-- Product 1 -->
-            <div class="product-card">
-                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=80');"></div>
-                <div class="product-info">
-                    <div class="product-category">Audio</div>
-                    <div class="product-title">Wireless Bluetooth Headphones (Premium Sound)</div>
-                    <div class="product-price">$45.00 / 165 AED</div>
-                    <button class="btn" style="padding: 8px 20px; font-size: 14px; width: 100%;">Order / Details</button>
-                </div>
-            </div>
+    <!-- Categories Filters Submenu -->
+    <div class="category-nav">
+        <button class="cat-btn active" onclick="filterCategory('all')">All Products</button>
+        <button class="cat-btn" onclick="filterCategory('audio')">Audio & Sound</button>
+        <button class="cat-btn" onclick="filterCategory('wearables')">Smart Wearables</button>
+        <button class="cat-btn" onclick="filterCategory('charging')">Power & Cables</button>
+        <button class="cat-btn" onclick="filterCategory('gaming')">Gaming Gear</button>
+        <button class="cat-btn" onclick="filterCategory('smart-home')">Smart Home</button>
+    </div>
 
-            <!-- Product 2 -->
-            <div class="product-card">
-                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=80');"></div>
-                <div class="product-info">
-                    <div class="product-category">Smart Wearables</div>
-                    <div class="product-title">Fitness Tracker Smartwatch (Waterproof IP68)</div>
-                    <div class="product-price">$60.00 / 220 AED</div>
-                    <button class="btn" style="padding: 8px 20px; font-size: 14px; width: 100%;">Order / Details</button>
-                </div>
-            </div>
-
-            <!-- Product 3 -->
-            <div class="product-card">
-                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1609592424209-dd9a2a5d2577?auto=format&fit=crop&w=400&q=80');"></div>
-                <div class="product-info">
-                    <div class="product-category">Accessories</div>
-                    <div class="product-title">Fast Charging 20,000mAh Power Bank</div>
-                    <div class="product-price">$35.00 / 130 AED</div>
-                    <button class="btn" style="padding: 8px 20px; font-size: 14px; width: 100%;">Order / Details</button>
-                </div>
-            </div>
+    <!-- Main Products Dashboard Section -->
+    <main class="container" id="store-container">
+        <h2 class="section-title">Explore Our 25 Best Selling Items</h2>
+        <div class="product-grid" id="product-grid-target">
+            <!-- JavaScript will render the 25 distinct products here dynamically -->
         </div>
     </main>
 
-    <!-- Contact & Store Information Section -->
+    <!-- Slide-Out Shopping Cart System Sidebar -->
+    <div class="cart-sidebar" id="cartSidebarDashboard">
+        <div class="cart-header">
+            <h3>Your Shopping Cart</h3>
+            <span class="close-cart" onclick="toggleCartSidebar(false)">&times;</span>
+        </div>
+        <div class="cart-items-list" id="cartItemsContainer">
+            <!-- Selected Items layout list render here -->
+            <p style="color:#64748b; text-align:center; margin-top:40px;" id="emptyCartMessage">Your cart is empty.</p>
+        </div>
+        <div class="cart-summary">
+            <div class="summary-row">
+                <span>Total Items:</span>
+                <span id="summary-total-items">0</span>
+            </div>
+            <div class="summary-row" style="font-size: 18px; color:#ff4757;">
+                <span>Grand Total:</span>
+                <span id="summary-grand-total">0 AED</span>
+            </div>
+        </div>
+        <button class="btn" style="width:100%;" onclick="checkoutProcess()">Proceed to Order via WhatsApp</button>
+    </div>
+
+    <!-- Contact & UAE Corporate Info Section -->
     <section class="contact-section" id="contact">
         <h2 class="section-title">Global Contact & Orders</h2>
-        
         <div class="contact-container">
-            <!-- Left Side: Real UAE Contact Info -->
             <div class="contact-info-box">
                 <h3>Store Information</h3>
                 <div class="info-item"><strong>Address:</strong> Abu Dhabi, United Arab Emirates</div>
                 <div class="info-item"><strong>Phone:</strong> <a href="tel:+971554804775" style="color: #00d2d3;">+971 55 480 4775</a></div>
                 <div class="info-item"><strong>Email:</strong> <a href="mailto:sssohail_76@yahoo.com" style="color: #00d2d3;">sssohail_76@yahoo.com</a></div>
-                <div class="info-item" style="margin-top: 15px; font-size: 14px; color: #94a3b8;">* Available on WhatsApp for international business inquiries.</div>
+                <div class="info-item" style="margin-top:15px; font-size:14px; color:#94a3b8;">* Fast delivery available across UAE and Global Shipping.</div>
             </div>
 
-            <!-- Right Side: Contact Form -->
             <div class="contact-form">
-                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Thank you! Your international inquiry has been sent.');">
+                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Inquiry received! We will contact you immediately.');">
                     <div class="form-group">
-                        <label for="name">Your Name / Company</label>
-                        <input type="text" id="name" placeholder="Enter your name" required>
+                        <label>Your Name</label>
+                        <input type="text" placeholder="Enter your full name" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">Your Email Address</label>
-                        <input type="email" id="email" placeholder="Enter your email" required>
+                        <label>Your Email</label>
+                        <input type="email" placeholder="Enter your email" required>
                     </div>
                     <div class="form-group">
-                        <label for="message">Order or Inquiry Details</label>
-                        <textarea id="message" rows="4" placeholder="Specify items, quantities, and country of delivery" required></textarea>
+                        <label>Message / Customized Order</label>
+                        <textarea rows="4" placeholder="Mention products details you want to import or test" required></textarea>
                     </div>
-                    <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                    <button type="submit" class="btn" style="width: 100%;">Submit Inquiry</button>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer Area -->
     <footer>
-        <p>&copy; 2026 New Moon Electronics & Accessories. All Rights Reserved.</p>
+        <p>&copy; 2026 New Moon Electronics & Accessories. Abu Dhabi, UAE. All Rights Reserved.</p>
     </footer>
 
+    <!-- Core Business logic Database script -->
+    <script>
+        // Array catalog containing 25 distinct premium items
+        const productsDatabase = [
+            { id: 1, title: "Wireless Bluetooth Headphones", priceAED: 165, cat: "audio", img: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=300&q=80" },
+            { id: 2, title: "Fitness Tracker Smartwatch IP68", priceAED: 220, cat: "wearables", img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=300&q=80" },
+            { id: 3, title: "Fast Charging 20000mAh Power Bank", priceAED: 130, cat: "charging", img: "https://images.unsplash.com/photo-1609592424209-dd9a2a5d2577?auto=format&fit=crop&w=300&q=80" },
+            { id: 4, title: "Mechanical RGB Gaming Keyboard", priceAED: 295, cat: "gaming", img: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=300&q=80" },
+            { id: 5, title: "Ergonomic Wireless Gaming Mouse", priceAED: 110, cat: "gaming", img: "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=300&q=80" },
+            { id: 6, title: "Dual Device Fast Wireless Charger Pad", priceAED: 90, cat: "charging", img: "https://images.unsplash.com/photo-1622445262465-2481c4574875?auto=format&fit=crop&w=300&q=80" },
+            { id: 7, title: "Smart LED Voice Controlled Bulb", priceAED: 55, cat: "smart-home", img: "https://images.unsplash.com/photo-1550524514-9b60208685e3?auto=format&fit=crop&w=300&q=80" },
+            { id: 8, title: "Noise Cancelling True Wireless Earbuds", priceAED: 180, cat: "audio", img: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=300&q=80" },
+            { id: 9, title: "Ultra HD 4K Pro Webcam Pro-Stream", priceAED: 250, cat: "gaming", img: "https://images.unsplash.com/photo-1603251603363-9a617183182a?auto=format&fit=crop&w=300&q=80" },
+            { id: 10, title: "Portable Waterproof Sound Speaker Mini", priceAED: 145, cat: "audio", img: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=300&q=80" },
+            { id: 11, title: "Heavy Bass Gaming Headset with Mic", priceAED: 210, cat: "gaming", img: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=300&q=80" },
+            { id: 12, title: "Luxury Premium Smart Metal Watch V2", priceAED: 440, cat: "wearables", img: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=300&q=80" },
+            { id: 13, title: "Magnetic Braided Type-C Fast Cable 3m", priceAED: 40, cat: "charging", img: "https://images.unsplash.com/photo-1541660802143-11726dd9fe06?auto=format&fit=crop&w=300&q=80" },
+            { id: 14, title: "65W GaN Multi-Port Laptop Wall Adapter", priceAED: 160, cat: "charging", img: "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=300&q=80" },
+            { id: 15, title: "Smart Home Security Wi-Fi AI Camera", priceAED: 195, cat: "smart-home", img: "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=300&q=80" },
+            { id: 16, title: "Bluetooth Item Anti-Lost Tracker Key", priceAED: 65, cat: "smart-home", img: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=300&q=80" },
+            { id: 17, title: "Studio USB Condenser Microphone Pod", priceAED: 280, cat: "audio", img: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=300&q=80" },
+            { id: 18, title: "Premium Leather Airpods Pro Case Skin", priceAED: 45, cat: "audio", img: "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?auto=format&fit=crop&w=300&q=80" },
+            { id: 19, title: "RGB LED Dynamic Ambiance Desktop Light", priceAED: 120, cat: "smart-home", img: "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=300&q=80" },
+            { id: 20, title: "Professional XL Speed Gaming Mousepad", priceAED: 75, cat: "gaming", img: "https://images.unsplash.com/photo-1616440347437-b1c73416efc2?auto=format&fit=crop&w=300&q=80" },
+            { id: 21, title: "Universal Travel Adapter Worldwide Fuse", priceAED: 85, cat: "charging", img: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=300&q=80" },
+            { id: 22, title: "Smart Digital Body Weight Scale Sync", priceAED: 135, cat: "wearables", img: "https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?auto=format&fit=crop&w=300&q=80" },
+            { id: 23, title: "High-Speed 8-in-1 Type-C Hub Dock", priceAED: 175, cat: "charging", img: "https://images.unsplash.com/photo-1468495244123-6c6c332eeece?auto=format&fit=crop&w=300&q=80" },
+            { id: 24, title: "Smart Door Lock Biometric Fingerprint", priceAED: 550, cat: "smart-home", img: "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=300&q=80" },
+            { id: 25, title: "Sports Bone Conduction Wireless Headset", priceAED: 230, cat: "audio", img: "https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?auto=format&fit=crop&w=300&q=80" }
+        ];
+
+        let shoppingCart = [];
+        const exchangeRateAEDtoUSD = 0.27; // Custom static Global conversion rate
+
+        // Render products catalogs dynamically inside website grids
+        function renderStoreItems(list = productsDatabase) {
+            const grid = document.getElementById("product-grid-target");
+            const selectedCurrency = document.getElementById("currencySelect").value;
+            grid.innerHTML = "";
+
+            list.forEach(p => {
+                let displayPrice = `${p.priceAED} AED`;
+                if(selectedCurrency === "USD") {
+                    displayPrice = `$ ${(p.priceAED * exchangeRateAEDtoUSD).toFixed(2)}`;
+                }
+
+                grid.innerHTML += `
+                    <div class="product-card" data-category="${p.cat}">
+                        <div class="product-image" style="background-image: url('${p.img}')"></div>
+                        <div class="product-info">
+                            <div>
+                                <div class="product-category">${p.cat.replace('-', ' ')}</div>
+                                <div class="product-title">${p.title}</div>
+                            </div>
+                            <div>
+                                <div class="product-price">${displayPrice}</div>
+                                <button class="add-to-cart-btn" onclick="addItemToCart(${p.id})">Add To Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        // Filter Categories Tab active state handling
+        function filterCategory(categoryName) {
+            document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            if(categoryName === 'all') {
+                renderStoreItems(productsDatabase);
+            } else {
+                const filtered = productsDatabase.filter(p => p.cat === categoryName);
+                renderStoreItems(filtered);
+            }
+        }
+
+        // Cart Actions Core Functionalities
+        function addItemToCart(productId) {
+            const product = productsDatabase.find(p => p.id === productId);
+            const exist = shoppingCart.find(item => item.id === productId);
+
+            if(exist) {
+                exist.qty += 1;
+            } else {
+                shoppingCart.push({ ...product, qty: 1 });
+            }
+            updateCartUI();
+            toggleCartSidebar(true); // Open sidebar dashboard instantly to prompt items addition validation feedback
+        }
+
+        function removeCartItem(productId) {
+            shoppingCart = shoppingCart.filter(item => item.id !== productId);
+            updateCartUI();
+        }
+
+        function toggleCartSidebar(show) {
+            const sidebar = document.getElementById("cartSidebarDashboard");
+            if(show) sidebar.classList.add("open");
+            else sidebar.classList.remove("open");
+        }
+
+        function updateCurrencyDisplay() {
+            renderStoreItems();
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartCountElement = document.getElementById("cart-count");
+            const itemsContainer = document.getElementById("cartItemsContainer");
+            const summaryTotalItems = document.getElementById("summary-total-items");
+            const summaryGrandTotal = document.getElementById("summary-grand-total");
+            const currency = document.getElementById("currencySelect").value;
+
+            let totalItemsCount = 0;
+            let totalAED = 0;
+
+            shoppingCart.forEach(i => {
+                totalItemsCount += i.qty;
+                totalAED += (i.priceAED * i.qty);
+            });
+
+            cartCountElement.innerText = totalItemsCount;
+            summaryTotalItems.innerText = totalItemsCount;
+
+            if(shoppingCart.length === 0) {
+                itemsContainer.innerHTML = `<p style="color:#64748b; text-align:center; margin-top:40px;">Your cart is empty.</p>`;
+                summaryGrandTotal.innerText = currency === "AED" ? "0 AED" : "$ 0.00";
+                return;
+            }
+
+            itemsContainer.innerHTML = "";
+            shoppingCart.forEach(item => {
+                let itemPriceStr = `${item.priceAED} AED`;
+                if(currency === "USD") {
+                    itemPriceStr = `$ ${(item.priceAED * exchangeRateAEDtoUSD).toFixed(2)}`;
+                }
+
+                itemsContainer.innerHTML += `
+                    <div class="cart-item">
+                        <div class="cart-item-details">
+                            <div class="cart-item-title">${item.title}</div>
+                            <span style="color:#64748b;">Qty: ${item.qty} x ${itemPriceStr}</span>
+                        </div>
+                        <span class="remove-item-btn" onclick="removeCartItem(${item.id})">Delete</span>
+                    </div>
+                `;
+            });
+
+            if(currency === "AED") {
+                summaryGrandTotal.innerText = `${totalAED} AED`;
+            } else {
+                summaryGrandTotal.innerText = `$ ${(totalAED * exchangeRateAEDtoUSD).toFixed(2)}`;
+            }
+        }
+
+        function checkoutProcess() {
+            if(shoppingCart.length === 0) {
+                alert("Your cart is empty! Please add some electronics items first.");
+                return;
+            }
+            let message = "Hello New Moon Electronics! I want to order:\n\n";
+            shoppingCart.forEach(i => {
+                message += `- ${i.title} (Qty: ${i.qty})\n`;
+            });
+            message += `\nTotal Bill Amount: ${document.getElementById("summary-grand-total").innerText}`;
+            
+            // Redirects order dispatch format straight to the company official UAE line
+            const whatsappUrl = `https://wa.me/971554804775?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Initialize display list on page mount
+        window.onload = function() {
+            renderStoreItems();
+        }
+    </script>
 </body>
 </html>
