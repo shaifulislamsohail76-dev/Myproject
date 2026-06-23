@@ -361,6 +361,52 @@
             font-weight: 600;
         }
 
+        /* Secure Payment Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .bank-details-box {
+            background-color: #f1f5f9;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 20px;
+            border-left: 4px solid #00d2d3;
+        }
+
+        .bank-details-box p {
+            margin-bottom: 8px;
+        }
+
         /* Contact Section */
         .contact-section {
             background-color: #0f172a;
@@ -440,7 +486,6 @@
 </head>
 <body>
 
-    <!-- Top Navigation Header -->
     <header>
         <nav class="navbar">
             <div class="logo">NEW MOON <span>ELECTRONICS</span></div>
@@ -463,14 +508,12 @@
         </nav>
     </header>
 
-    <!-- Hero Showcase Section -->
     <section class="hero">
         <h1>Global Electronics Mega Store</h1>
         <p>Your Premium Destination for Global Tech Accessories. 25 Featured High-Demand Items with Real-time Cart Calculations.</p>
         <button class="btn" onclick="document.getElementById('store-container').scrollIntoView();">View Catalog</button>
     </section>
 
-    <!-- Categories Filters Submenu -->
     <div class="category-nav">
         <button class="cat-btn active" onclick="filterCategory('all')">All Products</button>
         <button class="cat-btn" onclick="filterCategory('audio')">Audio & Sound</button>
@@ -480,22 +523,18 @@
         <button class="cat-btn" onclick="filterCategory('smart-home')">Smart Home</button>
     </div>
 
-    <!-- Main Products Dashboard Section -->
     <main class="container" id="store-container">
         <h2 class="section-title">Explore Our 25 Best Selling Items</h2>
         <div class="product-grid" id="product-grid-target">
-            <!-- JavaScript will render the 25 distinct products here dynamically -->
-        </div>
+            </div>
     </main>
 
-    <!-- Slide-Out Shopping Cart System Sidebar -->
     <div class="cart-sidebar" id="cartSidebarDashboard">
         <div class="cart-header">
             <h3>Your Shopping Cart</h3>
             <span class="close-cart" onclick="toggleCartSidebar(false)">&times;</span>
         </div>
         <div class="cart-items-list" id="cartItemsContainer">
-            <!-- Selected Items layout list render here -->
             <p style="color:#64748b; text-align:center; margin-top:40px;" id="emptyCartMessage">Your cart is empty.</p>
         </div>
         <div class="cart-summary">
@@ -508,10 +547,32 @@
                 <span id="summary-grand-total">0 AED</span>
             </div>
         </div>
-        <button class="btn" style="width:100%;" onclick="checkoutProcess()">Proceed to Order via WhatsApp</button>
+        <button class="btn" style="width:100%; margin-bottom: 10px;" onclick="openPaymentModal()">Pay via Credit/Visa Card</button>
+        <button class="btn" style="width:100%; background-color:#25d366; color:#fff;" onclick="checkoutProcess()">Order via WhatsApp</button>
     </div>
 
-    <!-- Contact & UAE Corporate Info Section -->
+    <div class="modal" id="paymentModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Secure Gateway Details</h3>
+                <span class="close-cart" onclick="closePaymentModal()">&times;</span>
+            </div>
+            <p style="font-size: 14px; margin-bottom: 15px; color:#64748b;">Please transfer the exact cart amount to the corporate account below to complete your international shipment verification.</p>
+            
+            <div class="bank-details-box">
+                <p><strong>Bank Name:</strong> The National Bank of Ras Al Khaimah (P.S.C.)</p>
+                <p><strong>Account Name:</strong> SHAIFUL ISLAM</p>
+                <p><strong>Account Number:</strong> 0032171662001</p>
+                <p><strong>IBAN:</strong> AE03 0400 0000 3217 1662 001</p>
+                <p><strong>Branch:</strong> MAKTOUM ST. DUBAI</p>
+                <p><strong>Currency:</strong> AED</p>
+                <p><strong>Swift Code:</strong> NRAKAEAK</p>
+                <p style="border-top: 1px solid #cbd5e1; padding-top: 5px; margin-top: 5px;"><strong>PayPal Business Email:</strong> sssohail_76@yahoo.com</p>
+            </div>
+            <button class="btn" style="width: 100%;" onclick="confirmPaymentAlert()">I Have Sent the Payment</button>
+        </div>
+    </div>
+
     <section class="contact-section" id="contact">
         <h2 class="section-title">Global Contact & Orders</h2>
         <div class="contact-container">
@@ -543,14 +604,12 @@
         </div>
     </section>
 
-    <!-- Footer Area -->
     <footer>
         <p>&copy; 2026 New Moon Electronics & Accessories. Abu Dhabi, UAE. All Rights Reserved.</p>
     </footer>
 
-    <!-- Core Business logic Database script -->
     <script>
-        // Array catalog containing 25 distinct premium items
+        // Fixed electronics product database list with 25 products
         const productsDatabase = [
             { id: 1, title: "Wireless Bluetooth Headphones", priceAED: 165, cat: "audio", img: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=300&q=80" },
             { id: 2, title: "Fitness Tracker Smartwatch IP68", priceAED: 220, cat: "wearables", img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=300&q=80" },
@@ -564,25 +623,24 @@
             { id: 10, title: "Portable Waterproof Sound Speaker Mini", priceAED: 145, cat: "audio", img: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=300&q=80" },
             { id: 11, title: "Heavy Bass Gaming Headset with Mic", priceAED: 210, cat: "gaming", img: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=300&q=80" },
             { id: 12, title: "Luxury Premium Smart Metal Watch V2", priceAED: 440, cat: "wearables", img: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=300&q=80" },
-            { id: 13, title: "Magnetic Braided Type-C Fast Cable 3m", priceAED: 40, cat: "charging", img: "https://images.unsplash.com/photo-1541660802143-11726dd9fe06?auto=format&fit=crop&w=300&q=80" },
+            { id: 13, title: "Magnetic Braided Type-C Fast Cable 3m", priceAED: 40, cat: "charging", img: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?auto=format&fit=crop&w=300&q=80" },
             { id: 14, title: "65W GaN Multi-Port Laptop Wall Adapter", priceAED: 160, cat: "charging", img: "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=300&q=80" },
-            { id: 15, title: "Smart Home Security Wi-Fi AI Camera", priceAED: 195, cat: "smart-home", img: "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=300&q=80" },
-            { id: 16, title: "Bluetooth Item Anti-Lost Tracker Key", priceAED: 65, cat: "smart-home", img: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=300&q=80" },
+            { id: 15, title: "Smart Home Security Wi-Fi AI Camera", priceAED: 195, cat: "smart-home", img: "https://images.unsplash.com/photo-1557862921-37829c790f19?auto=format&fit=crop&w=300&q=80" },
+            { id: 16, title: "Bluetooth Item Anti-Lost Tracker Key", priceAED: 65, cat: "smart-home", img: "https://images.unsplash.com/photo-1564425947514-683a3036e52c?auto=format&fit=crop&w=300&q=80" },
             { id: 17, title: "Studio USB Condenser Microphone Pod", priceAED: 280, cat: "audio", img: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=300&q=80" },
             { id: 18, title: "Premium Leather Airpods Pro Case Skin", priceAED: 45, cat: "audio", img: "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?auto=format&fit=crop&w=300&q=80" },
-            { id: 19, title: "RGB LED Dynamic Ambiance Desktop Light", priceAED: 120, cat: "smart-home", img: "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=300&q=80" },
+            { id: 19, title: "RGB LED Dynamic Ambiance Desktop Light", priceAED: 120, cat: "smart-home", img: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=300&q=80" },
             { id: 20, title: "Professional XL Speed Gaming Mousepad", priceAED: 75, cat: "gaming", img: "https://images.unsplash.com/photo-1616440347437-b1c73416efc2?auto=format&fit=crop&w=300&q=80" },
-            { id: 21, title: "Universal Travel Adapter Worldwide Fuse", priceAED: 85, cat: "charging", img: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=300&q=80" },
+            { id: 21, title: "Universal Travel Adapter Worldwide Fuse", priceAED: 85, cat: "charging", img: "https://images.unsplash.com/photo-1606904825846-647eb07f5be2?auto=format&fit=crop&w=300&q=80" },
             { id: 22, title: "Smart Digital Body Weight Scale Sync", priceAED: 135, cat: "wearables", img: "https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?auto=format&fit=crop&w=300&q=80" },
-            { id: 23, title: "High-Speed 8-in-1 Type-C Hub Dock", priceAED: 175, cat: "charging", img: "https://images.unsplash.com/photo-1468495244123-6c6c332eeece?auto=format&fit=crop&w=300&q=80" },
-            { id: 24, title: "Smart Door Lock Biometric Fingerprint", priceAED: 550, cat: "smart-home", img: "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=300&q=80" },
+            { id: 23, title: "High-Speed 8-in-1 Type-C Hub Dock", priceAED: 175, cat: "charging", img: "https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=300&q=80" },
+            { id: 24, title: "Smart Door Lock Biometric Fingerprint", priceAED: 550, cat: "smart-home", img: "https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=300&q=80" },
             { id: 25, title: "Sports Bone Conduction Wireless Headset", priceAED: 230, cat: "audio", img: "https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?auto=format&fit=crop&w=300&q=80" }
         ];
 
         let shoppingCart = [];
-        const exchangeRateAEDtoUSD = 0.27; // Custom static Global conversion rate
+        const exchangeRateAEDtoUSD = 0.27;
 
-        // Render products catalogs dynamically inside website grids
         function renderStoreItems(list = productsDatabase) {
             const grid = document.getElementById("product-grid-target");
             const selectedCurrency = document.getElementById("currencySelect").value;
@@ -612,7 +670,6 @@
             });
         }
 
-        // Filter Categories Tab active state handling
         function filterCategory(categoryName) {
             document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
@@ -625,7 +682,6 @@
             }
         }
 
-        // Cart Actions Core Functionalities
         function addItemToCart(productId) {
             const product = productsDatabase.find(p => p.id === productId);
             const exist = shoppingCart.find(item => item.id === productId);
@@ -636,7 +692,7 @@
                 shoppingCart.push({ ...product, qty: 1 });
             }
             updateCartUI();
-            toggleCartSidebar(true); // Open sidebar dashboard instantly to prompt items addition validation feedback
+            toggleCartSidebar(true);
         }
 
         function removeCartItem(productId) {
@@ -704,23 +760,41 @@
             }
         }
 
-        function checkoutProcess() {
+        // Modal Controls
+        function openPaymentModal() {
             if(shoppingCart.length === 0) {
-                alert("Your cart is empty! Please add some electronics items first.");
+                alert("Your cart is empty!");
                 return;
             }
-            let message = "Hello New Moon Electronics! I want to order:\n\n";
+            document.getElementById("paymentModal").style.display = "flex";
+        }
+
+        function closePaymentModal() {
+            document.getElementById("paymentModal").style.display = "none";
+        }
+
+        function confirmPaymentAlert() {
+            alert("Thank you! Your payment verification note has been recorded. Please send the screenshot to our support WhatsApp to finalize the packaging.");
+            closePaymentModal();
+            checkoutProcess();
+        }
+
+        function checkoutProcess() {
+            if(shoppingCart.length === 0) {
+                alert("Your cart is empty! Please add some items.");
+                return;
+            }
+            let message = "Hello New Moon Electronics! I want to confirm my order:\n\n";
             shoppingCart.forEach(i => {
                 message += `- ${i.title} (Qty: ${i.qty})\n`;
             });
-            message += `\nTotal Bill Amount: ${document.getElementById("summary-grand-total").innerText}`;
+            message += `\nTotal Bill Amount: ${document.getElementById("summary-grand-total").innerText}\n`;
+            message += `\nPayment Method Selected: Direct Bank Transfer (RAKBANK) / PayPal`;
             
-            // Redirects order dispatch format straight to the company official UAE line
             const whatsappUrl = `https://wa.me/971554804775?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
         }
 
-        // Initialize display list on page mount
         window.onload = function() {
             renderStoreItems();
         }
