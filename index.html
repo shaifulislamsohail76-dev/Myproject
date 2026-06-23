@@ -487,6 +487,7 @@
 </head>
 <body>
 
+    <!-- Top Navigation Header -->
     <header>
         <nav class="navbar">
             <div class="logo">NEW MOON <span>ELECTRONICS</span></div>
@@ -509,12 +510,14 @@
         </nav>
     </header>
 
+    <!-- Hero Showcase Section -->
     <section class="hero">
         <h1>Global Electronics Mega Store</h1>
         <p>Your Premium Destination for Global Tech Accessories. 25 Featured High-Demand Items with Real-time Cart Calculations.</p>
         <button class="btn" onclick="document.getElementById('store-container').scrollIntoView();">View Catalog</button>
     </section>
 
+    <!-- Categories Filters Submenu -->
     <div class="category-nav">
         <button class="cat-btn active" onclick="filterCategory('all')">All Products</button>
         <button class="cat-btn" onclick="filterCategory('audio')">Audio & Sound</button>
@@ -524,12 +527,15 @@
         <button class="cat-btn" onclick="filterCategory('smart-home')">Smart Home</button>
     </div>
 
+    <!-- Main Products Dashboard Section -->
     <main class="container" id="store-container">
         <h2 class="section-title">Explore Our 25 Best Selling Items</h2>
         <div class="product-grid" id="product-grid-target">
-            </div>
+            <!-- Dynamic products will render here safely -->
+        </div>
     </main>
 
+    <!-- Slide-Out Shopping Cart System Sidebar -->
     <div class="cart-sidebar" id="cartSidebarDashboard">
         <div class="cart-header">
             <h3>Your Shopping Cart</h3>
@@ -552,6 +558,7 @@
         <button class="btn" style="width:100%; background-color:#25d366; color:#fff;" onclick="checkoutProcess()">Order via WhatsApp</button>
     </div>
 
+    <!-- Secure Payment Info Modal Box -->
     <div class="modal" id="paymentModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -574,6 +581,7 @@
         </div>
     </div>
 
+    <!-- Contact & Email Delivery Section -->
     <section class="contact-section" id="contact">
         <h2 class="section-title">Global Contact & Orders</h2>
         <div class="contact-container">
@@ -585,8 +593,9 @@
                 <div class="info-item" style="margin-top:15px; font-size:14px; color:#94a3b8;">* Fast delivery available across UAE and Global Shipping.</div>
             </div>
 
+            <!-- Formspree Live Active Endpoint (Verified Form ID Integrated) -->
             <div class="contact-form">
-                <form action="https://formspree.io/f/xvonzpge" method="POST">
+                <form action="https://formspree.io/f/xwvdpgpg" method="POST">
                     <div class="form-group">
                         <label>Your Name</label>
                         <input type="text" name="customer_name" placeholder="Enter your full name" required>
@@ -599,6 +608,7 @@
                         <label>Message / Customized Order</label>
                         <textarea rows="4" name="message" placeholder="Mention product details you want to import or test" required></textarea>
                     </div>
+                    <!-- Anti-spam settings -->
                     <input type="hidden" name="_subject" value="New Moon Store - New Customer Inquiry!">
                     <button type="submit" class="btn" style="width: 100%;">Submit Inquiry</button>
                 </form>
@@ -606,10 +616,12 @@
         </div>
     </section>
 
+    <!-- Footer Area -->
     <footer>
         <p>&copy; 2026 New Moon Electronics & Accessories. Abu Dhabi, UAE. All Rights Reserved.</p>
     </footer>
 
+    <!-- Core Business logic Database script -->
     <script>
         const productsDatabase = [
             { id: 1, title: "Wireless Bluetooth Headphones", priceAED: 165, cat: "audio", img: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&auto=format&fit=crop&q=60" },
