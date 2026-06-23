@@ -1,10 +1,433 @@
-html
-<!doctype html>
-<html>
-    <title>my frist project</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Moon Electronics & Accessories | International</title>
+    <style>
+        /* CSS Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: #0f172a;
+            color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #00d2d3;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin-left: 25px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: #cbd5e1;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #00d2d3;
+        }
+
+        /* International Selector Dropdown */
+        .intl-select {
+            background-color: #1e293b;
+            color: #fff;
+            border: 1px solid #334155;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('https://images.unsplash.com/photo-1468495244123-6c6c332eeece?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 25px;
+            max-width: 600px;
+            color: #94a3b8;
+        }
+
+        .btn {
+            background-color: #00d2d3;
+            color: #0f172a;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #1dd1a1;
+            transform: translateY(-2px);
+        }
+
+        /* Product Section */
+        .container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 40px;
+            position: relative;
+            color: #0f172a;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 50px;
+            height: 3px;
+            background-color: #00d2d3;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #e2e8f0;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .product-image {
+            height: 250px;
+            background-color: #eaeaea;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-category {
+            font-size: 11px;
+            color: #00d2d3;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .product-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 10px;
+            height: 50px;
+            overflow: hidden;
+        }
+
+        .product-price {
+            color: #ff4757;
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        /* Contact & Info Section */
+        .contact-section {
+            background-color: #0f172a;
+            color: #fff;
+            padding: 60px 20px;
+        }
+
+        .contact-section .section-title {
+            color: #fff;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .contact-info-box {
+            background: #1e293b;
+            padding: 40px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-info-box h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: #00d2d3;
+        }
+
+        .info-item {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #cbd5e1;
+        }
+
+        .info-item strong {
+            color: #fff;
+        }
+
+        .contact-form {
+            background: #1e293b;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #94a3b8;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background-color: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 4px;
+            font-size: 15px;
+            color: #fff;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #00d2d3;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #020617;
+            color: #fff;
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid #1e293b;
+        }
+
+        footer p {
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        /* Responsive Menu */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+            .nav-links {
+                margin-top: 15px;
+                flex-direction: column;
+                gap: 10px;
+            }
+            .nav-links li {
+                margin-left: 0;
+            }
+            .hero h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>welcome to newmoon fashion!</h1>
-    <p>this page is hosted from kali linux.</p>
+
+    <!-- Header & Navbar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">NEW MOON <span>ELECTRONICS</span></div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li>
+                    <!-- International Currency/Language Selector -->
+                    <select class="intl-select" onchange="alert('Currency/Language switched successfully!')">
+                        <option value="USD">USD ($) - EN</option>
+                        <option value="AED">AED (د.إ) - AR</option>
+                        <option value="BDT">BDT (৳) - BN</option>
+                    </select>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero">
+        <h1>Smart Gadgets & Electronics Collection</h1>
+        <p>Your Trusted Global Partner for Premium Electronics Accessories. Worldwide Shipping & Top-Tier Brands Available.</p>
+        <button class="btn" onclick="location.href='#products'">Explore Products</button>
+    </section>
+
+    <!-- Main Content Container -->
+    <main class="container" id="products">
+        <h2 class="section-title">Our Featured Products</h2>
+        
+        <div class="product-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=80');"></div>
+                <div class="product-info">
+                    <div class="product-category">Audio</div>
+                    <div class="product-title">Wireless Bluetooth Headphones (Premium Sound)</div>
+                    <div class="product-price">$45.00 / 165 AED</div>
+                    <button class="btn" style="padding: 8px 20px; font-size: 14px; width: 100%;">Order / Details</button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=80');"></div>
+                <div class="product-info">
+                    <div class="product-category">Smart Wearables</div>
+                    <div class="product-title">Fitness Tracker Smartwatch (Waterproof IP68)</div>
+                    <div class="product-price">$60.00 / 220 AED</div>
+                    <button class="btn" style="padding: 8px 20px; font-size: 14px; width: 100%;">Order / Details</button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1609592424209-dd9a2a5d2577?auto=format&fit=crop&w=400&q=80');"></div>
+                <div class="product-info">
+                    <div class="product-category">Accessories</div>
+                    <div class="product-title">Fast Charging 20,000mAh Power Bank</div>
+                    <div class="product-price">$35.00 / 130 AED</div>
+                    <button class="btn" style="padding: 8px 20px; font-size: 14px; width: 100%;">Order / Details</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Contact & Store Information Section -->
+    <section class="contact-section" id="contact">
+        <h2 class="section-title">Global Contact & Orders</h2>
+        
+        <div class="contact-container">
+            <!-- Left Side: Real UAE Contact Info -->
+            <div class="contact-info-box">
+                <h3>Store Information</h3>
+                <div class="info-item"><strong>Address:</strong> Abu Dhabi, United Arab Emirates</div>
+                <div class="info-item"><strong>Phone:</strong> <a href="tel:+971554804775" style="color: #00d2d3;">+971 55 480 4775</a></div>
+                <div class="info-item"><strong>Email:</strong> <a href="mailto:sssohail_76@yahoo.com" style="color: #00d2d3;">sssohail_76@yahoo.com</a></div>
+                <div class="info-item" style="margin-top: 15px; font-size: 14px; color: #94a3b8;">* Available on WhatsApp for international business inquiries.</div>
+            </div>
+
+            <!-- Right Side: Contact Form -->
+            <div class="contact-form">
+                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Thank you! Your international inquiry has been sent.');">
+                    <div class="form-group">
+                        <label for="name">Your Name / Company</label>
+                        <input type="text" id="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email Address</label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Order or Inquiry Details</label>
+                        <textarea id="message" rows="4" placeholder="Specify items, quantities, and country of delivery" required></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 New Moon Electronics & Accessories. All Rights Reserved.</p>
+    </footer>
+
 </body>
 </html>
