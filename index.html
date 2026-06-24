@@ -42,6 +42,7 @@
             max-width: 1400px;
             margin: 0 auto;
             padding: 15px 20px;
+            flex-wrap: wrap; /* ডেস্কটপে ভেঙে না যাওয়ার জন্য */
         }
 
         .logo {
@@ -58,10 +59,12 @@
             display: flex;
             list-style: none;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .nav-links li {
-            margin-left: 25px;
+            margin-left: 10px;
         }
 
         .nav-links a {
@@ -85,17 +88,18 @@
             outline: none;
         }
 
-        /* Floating Cart Icon Button */
+        /* Floating Cart Icon Button (কাস্টমাইজড - সাইজ ছোট করা হয়েছে) */
         .cart-status-btn {
             background-color: #ff4757;
             color: white;
-            padding: 8px 15px;
+            padding: 5px 12px; /* সাইজ ছোট করা হয়েছে */
+            font-size: 13px;    /* ফন্ট কিছুটা ছোট করা হয়েছে */
             border-radius: 20px;
             font-weight: bold;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 5px;
             transition: background 0.3s;
         }
 
@@ -106,14 +110,14 @@
         /* Hero Section */
         .hero {
             background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('https://images.unsplash.com/photo-1468495244123-6c6c332eeece?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
-            height: 40vh;
+            min-height: 40vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             color: #fff;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
         .hero h1 {
@@ -155,6 +159,7 @@
             display: flex;
             gap: 15px;
             overflow-x: auto;
+            scrollbar-width: thin;
         }
 
         .cat-btn {
@@ -174,7 +179,7 @@
             color: #fff;
         }
 
-        /* Product Section */
+        /* Product Section (ডেস্কটপ এবং মোবাইল রেসপনসিভ গ্রিড) */
         .container {
             max-width: 1400px;
             margin: 20px auto 60px;
@@ -202,7 +207,7 @@
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(4, 1fr); /* ডেস্কটপে ৪টি কলাম নিশ্চিত করার জন্য */
             gap: 25px;
         }
 
@@ -279,6 +284,48 @@
         .add-to-cart-btn:hover {
             background-color: #00d2d3;
             color: #0f172a;
+        }
+
+        /* Terms & Conditions Section (নতুন রিটার্ন পলিসি সেকশন) */
+        .terms-section {
+            background-color: #f1f5f9;
+            padding: 60px 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .terms-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+
+        .terms-container h3 {
+            color: #0f172a;
+            margin-bottom: 15px;
+            font-size: 20px;
+            border-bottom: 2px solid #00d2d3;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        .terms-container ul {
+            list-style-type: square;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .terms-container li {
+            margin-bottom: 10px;
+            color: #475569;
+            font-size: 15px;
+        }
+
+        .highlight-text {
+            color: #ff4757;
+            font-weight: bold;
         }
 
         /* Slide-out Cart Sidebar Dashboard */
@@ -478,9 +525,20 @@
             border-top: 1px solid #1e293b;
         }
 
-        @media (max-width: 768px) {
-            .navbar { flex-direction: column; gap: 15px; }
+        /* রেসপনসিভ মিডিয়া কোয়েরি (মোবাইল ও ট্যাবলেটের জন্য) */
+        @media (max-width: 1200px) {
+            .product-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        @media (max-width: 900px) {
+            .product-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 600px) {
+            .navbar { flex-direction: column; gap: 15px; text-align: center; }
+            .nav-links { justify-content: center; }
             .hero h1 { font-size: 24px; }
+            .product-grid { grid-template-columns: repeat(1, 1fr); }
             .cart-sidebar { width: 100%; right: -100%; }
         }
     </style>
@@ -494,6 +552,7 @@
             <ul class="nav-links">
                 <li><a href="#">Home</a></li>
                 <li><a href="#store-container">Products</a></li>
+                <li><a href="#return-policy">Return Policy</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li>
                     <select class="intl-select" id="currencySelect" onchange="updateCurrencyDisplay()">
@@ -534,6 +593,27 @@
             <!-- Dynamic products will render here safely -->
         </div>
     </main>
+
+    <!-- Terms & Conditions Section (রিটার্ন পলিসি) -->
+    <section class="terms-section" id="return-policy">
+        <div class="terms-container">
+            <h2 class="section-title" style="font-size: 26px; margin-bottom: 25px;">Terms & Conditions</h2>
+            
+            <h3>Return & Refund Policy</h3>
+            <ul>
+                <li>If you receive a damaged, defective, or incorrect product, you are eligible for a return.</li>
+                <li>The product must be unused, in its original packaging, and with all original tags/accessories included.</li>
+                <li><span class="highlight-text">Return Window:</span> Customers must initiate the return request within <span class="highlight-text">7 Days</span> from the date of delivery.</li>
+                <li><span class="highlight-text">Strict Policy:</span> Any return request made <span class="highlight-text">after 7 days will NOT be accepted</span> under any circumstances.</li>
+            </ul>
+
+            <h3>Shipping & Verification</h3>
+            <ul>
+                <li>Once your return package is received and inspected by our warehouse team, your refund or replacement will be processed.</li>
+                <li>For change-of-mind returns, the customer will be responsible for paying the return shipping fees.</li>
+            </ul>
+        </div>
+    </section>
 
     <!-- Slide-Out Shopping Cart System Sidebar -->
     <div class="cart-sidebar" id="cartSidebarDashboard">
@@ -593,7 +673,7 @@
                 <div class="info-item" style="margin-top:15px; font-size:14px; color:#94a3b8;">* Fast delivery available across UAE and Global Shipping.</div>
             </div>
 
-            <!-- Formspree Live Active Endpoint (Verified Form ID Integrated) -->
+            <!-- Formspree Live Active Endpoint -->
             <div class="contact-form">
                 <form action="https://formspree.io/f/xwvdpgpg" method="POST">
                     <div class="form-group">
@@ -608,7 +688,6 @@
                         <label>Message / Customized Order</label>
                         <textarea rows="4" name="message" placeholder="Mention product details you want to import or test" required></textarea>
                     </div>
-                    <!-- Anti-spam settings -->
                     <input type="hidden" name="_subject" value="New Moon Store - New Customer Inquiry!">
                     <button type="submit" class="btn" style="width: 100%;">Submit Inquiry</button>
                 </form>
